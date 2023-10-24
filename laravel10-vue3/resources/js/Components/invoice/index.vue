@@ -95,17 +95,28 @@
     })
 
     const getInvoices = async () => {
-        let response = await axios.get('/api/get_all_invoices');
+        try {
+            let response = await axios.get('/api/get_all_invoices');
+            invoices.value = response.data.invoice;
 
-        invoices.value = response.data.invoice;
+        } catch (error) {
+            console.log(error);
+        }
         // console.log(response);
     }
 
     const search = async () => {
-        let response = await axios.get('/api/search_invoice?s='+searchInvoice.value);
-        invoices.value = response.data.invoice;
 
-        console.log('response', response.data.invoices);
+        try {
+
+            let response = await axios.get('/api/search_invoice?s='+searchInvoice.value);
+            invoices.value = response.data.invoice;
+            console.log(invoices.value);
+
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 
     // export default {
