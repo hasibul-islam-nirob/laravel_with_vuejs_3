@@ -11,8 +11,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "vue": "^3.3.6",
-        "vue-axios": "^3.5.2",
-        "vue-router": "^4.2.5"
+        "@vitejs/plugin-vue": "^4.4.0",
+        "vue": "^3.2.36",
+        "vue-loader": "^17.3.0"
     }
 }
