@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
-    public function get_all_invoices(Request $request){
+    public function get_all_invoices(){
 
         $invoice = Invoice::with('customers')->orderBy('id', 'DESC')->get();
 
@@ -22,4 +22,24 @@ class InvoiceController extends Controller
         // return response()->json($data);
 
     }
+
+
+    public function search_invoice(Request $request){
+        $search = $request->get('s');
+
+        if ($search != null) {
+            $invoice = Invoice::with('customers')
+                        ->where('id', 'LIKE', "%$search%")
+                        ->get();
+
+            return response()->json([
+                'invoice' => $invoice
+            ], 200);
+
+        }else{
+            return $this->get_all_invoices();
+        }
+
+    }
+
 }
