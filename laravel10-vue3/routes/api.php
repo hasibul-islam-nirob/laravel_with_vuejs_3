@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/get_all_invoices', [InvoiceController::class, 'get_all_invoices']);
 Route::get('/search_invoice', [InvoiceController::class, 'search_invoice']);
+Route::get('/create_invoice', [InvoiceController::class, 'create_invoice']);
