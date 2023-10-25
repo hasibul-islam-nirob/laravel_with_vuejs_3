@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 // })
 // ->name('application');
 
-Route::get('/', function () {
-    return view('app');
-})
-->name('application');
+// Route::get('/', function () {
+//     return view('app');
+// })
+// ->name('application');
 
 Route::get('/{pathMatch}', function(){
     return view('welcome');
