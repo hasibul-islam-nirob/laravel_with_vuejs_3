@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Products;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class InvoiceItem extends Model
 {
@@ -17,4 +18,8 @@ class InvoiceItem extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function product(){
+        return $this->belongsTo(Products::class);
+    }
 }

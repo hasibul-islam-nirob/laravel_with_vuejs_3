@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Customers;
+use App\Models\InvoiceItem;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -26,6 +27,10 @@ class Invoice extends Model
 
     public function customers(){
         return $this->belongsTo(Customers::class);
+    }
+
+    public function invoice_items(){
+        return $this->hasMany(InvoiceItem::class);
     }
 
 }

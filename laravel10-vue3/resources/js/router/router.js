@@ -3,6 +3,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import invoiceIndex from '../Components/invoice/index.vue';
 import notFound from '../Components/notFound.vue';
 import addNewForm from '../Components/invoice/new.vue';
+import showInvoice from '../Components/invoice/show.vue';
 
 const routes = [
     {
@@ -16,6 +17,11 @@ const routes = [
     {
         path:'/invoice/new',
         component: addNewForm
+    },
+    {
+        path:'/invoice/show/:id',
+        component: showInvoice,
+        props: true
     }
 ]
 

@@ -168,6 +168,8 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+const router = useRouter();
 import axios from "axios";
 import { ref, onMounted } from "vue"; // Import ref and onMounted from Vue
 
