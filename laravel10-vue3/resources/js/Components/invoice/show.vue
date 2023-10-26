@@ -25,7 +25,7 @@
             </li>
             <li>
               <!-- Select Btn Option -->
-              <button class="selectBtnFlat">
+              <button class="selectBtnFlat" @click="onEdit(form.id)">
                 <i class="fas fa-reply"></i>
                 Edit
               </button>
@@ -167,6 +167,10 @@ const getInvoice = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const onEdit = (id) => {
+  router.push("/invoice/edit/" + id);
 };
 
 const print = () => {
