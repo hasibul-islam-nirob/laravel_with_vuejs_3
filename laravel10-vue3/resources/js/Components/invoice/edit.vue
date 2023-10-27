@@ -280,7 +280,7 @@ const onEdit = (id) => {
     formData.append("tre_n_condition", form.value.tre_n_condition);
 
     axios.post(`/api/update_invoice/${form.value.id}`, formData);
-   form.value.invoice_items = [];
+    form.value.invoice_items = [];
     router.push("/");
   }
 }
