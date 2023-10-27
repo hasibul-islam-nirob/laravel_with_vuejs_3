@@ -33,6 +33,20 @@ class InvoiceController extends Controller
         ], 200);
     }
 
+
+    public function edit_invoice($id){
+        $invoice = Invoice::with(['customers', 'invoice_items.product'])->find($id);
+
+        return response()->json([
+            'invoice' => $invoice
+        ], 200);
+    }
+
+    public function delete_invoice_items($id){
+        $invoiceItem = InvoiceItem::findOrFail($id);
+        $invoiceItem->delete();
+    }
+
     public function add_invoice(Request $request){
 
         // dd($request->all());

@@ -176,8 +176,8 @@ import { ref, onMounted } from "vue"; // Import ref and onMounted from Vue
 export default {
   setup() {
     // Define reactive variables using ref
-    const allCustomers = ref([]);
     const form = ref([]);
+    const allCustomers = ref([]);
     const customer_id = ref("");
     const item = ref([]);
     const listCard = ref([]);
