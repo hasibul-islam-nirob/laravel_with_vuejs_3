@@ -27,6 +27,7 @@ Route::get('/create_invoice', [InvoiceController::class, 'create_invoice']);
 
 
 Route::post('/add_invoice', [InvoiceController::class, 'add_invoice']);
+Route::post('/update_invoice/{id}', [InvoiceController::class, 'update_invoice']);
 
 Route::get('/show_invoice/{id}', [InvoiceController::class, 'show_invoice']);
 Route::get('/edit_invoice/{id}', [InvoiceController::class, 'edit_invoice']);

@@ -260,7 +260,28 @@ const Total = () => {
 
 const onEdit = (id) => {
   if (form.value.invoice_items.length >= 1) {
-    alert(JSON.stringify(form.value.invoice_items))
+    // alert(JSON.stringify(form.value.invoice_items))
+    let subtotal = 0;
+    subtotal = subTotal();
+
+    let total = 0;
+    total = Total();
+
+    const formData = new FormData();
+    formData.append("invoice_item", JSON.stringify(form.value.invoice_items));
+    formData.append("customer_id", form.value.customer_id);
+    formData.append("date", form.value.date);
+    formData.append("due_date", form.value.due_date);
+    formData.append("number", form.value.number);
+    formData.append("referece", form.value.referece);
+    formData.append("discount", form.value.discount);
+    formData.append("subtotal", subtotal);
+    formData.append("total", total);
+    formData.append("tre_n_condition", form.value.tre_n_condition);
+
+    axios.post(`/api/update_invoice/${form.value.id}`, formData);
+   form.value.invoice_items = [];
+    router.push("/");
   }
 }
 

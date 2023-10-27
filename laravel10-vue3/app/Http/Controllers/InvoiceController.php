@@ -47,6 +47,38 @@ class InvoiceController extends Controller
         $invoiceItem->delete();
     }
 
+    public function update_invoice(Request $request, $id){
+
+        // dd($request->all(), $id, $request->invoice_item);
+
+        $invoice = Invoice::where('id',$id)->first();
+
+        $invoice->customers_id  = $request->customer_id;
+        $invoice->date          = $request->date;
+        $invoice->due_date      = $request->due_date;
+        $invoice->number        = $request->number;
+        $invoice->reference      = $request->referece;
+        $invoice->discount      = $request->discount;
+        $invoice->sub_total      = $request->subtotal;
+        $invoice->total          = $request->total;
+        $invoice->tre_n_condition = $request->tre_n_condition;
+
+        $invoice->update($request->all());
+
+        $invoiceItem = $request->invoice_item;
+
+        $invoice->invoice_items()->delete();
+        foreach(json_decode($invoiceItem) as $item){
+            $itemData['product_id'] = $item->product_id;
+            $itemData['invoice_id'] = $invoice->id;
+            $itemData['quantity'] = $item->quantity;
+            $itemData['unit_price'] = $item->unit_price;
+
+            InvoiceItem::create($itemData);
+        }
+
+    }
+
     public function add_invoice(Request $request){
 
         // dd($request->all());
